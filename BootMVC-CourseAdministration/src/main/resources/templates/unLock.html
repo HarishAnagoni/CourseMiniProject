@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .unlock-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .unlock-container h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #17a2b8;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #138496;
+        }
+        .links {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="unlock-container">
+        <h2>Unlock Account</h2>
+        <p>Enter your temporary password and set a new password.</p>
+        <form th:action="@{/unlock}" th:method="POST" th:object="${unlockform}">
+        <div><h3>Your Mail Id ::</h3> <span th:text="${email}"></span></div>
+        	<b style="color: red" th:text="${Msg}" />
+               <input type="hidden" th:field="*{email}">
+            
+            <div class="input-group">
+                <label for="temp-password">Temporary Password:</label>
+                <input type="password" id="temp-password" th:field="*{tempPwd}" name="temp-password" required>
+            </div>
+            <div class="input-group">
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" th:field="*{newPwd}" name="new-password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" th:field="*{newPwd1}" name="confirm-password" required>
+            </div>
+            <button type="submit" class="btn">Unlock Account</button>
+        </form>
+        <div class="links">
+            <a href="login">Back to Login</a>
+        </div>
+    </div>
+
+</body>
+</html>

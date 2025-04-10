@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+ <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #1e7e34;
+        }
+        .links {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>User Registration</h2>
+        <p style="color:green" th:text="${SuccessMsg}"/><p style="color:red" th:text="${errMsg}"/>
+        <form th:action="@{/register}" th:object="${form}" method="POST">
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" th:field="*{name}" />
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:field="*{email}" >
+            </div>
+            <div class="input-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" name="phone" id="phone"  th:field="*{phno}" >
+            </div>
+             <input type="submit" class="btn btn-primary" value="SignUp"/>
+        </form>
+        <div class="links">
+            Already have an account? <a href="login">Login here</a>
+        </div>
+    </div>
+
+</body>
+</html>
