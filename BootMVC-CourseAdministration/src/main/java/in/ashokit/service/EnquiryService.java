@@ -117,7 +117,7 @@ public class EnquiryService implements IEnquiryService{
 			List<StudentEnqEntity> list=user.getEnquires();	
 		return list;
 		}else {
-			throw new IllegalArgumentException("Invalid User");
+			throw new IllegalArgumentException(Mode.INVALID_USER);
 		}
 	}
 }
